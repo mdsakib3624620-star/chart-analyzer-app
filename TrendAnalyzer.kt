@@ -2,8 +2,16 @@ package com.example.chartanalyzer
 
 class TrendAnalyzer {
 
-    fun detectTrend() {
-        // Uptrend, Downtrend, Sideways detection will be added here
+    fun detectTrend(
+        currentPrice: Double,
+        previousPrice: Double
+    ): String {
+
+        return when {
+            currentPrice > previousPrice -> "UP"
+            currentPrice < previousPrice -> "DOWN"
+            else -> "SIDEWAYS"
+        }
     }
 
 }
