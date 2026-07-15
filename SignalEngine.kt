@@ -4,17 +4,37 @@ class SignalEngine {
 
     fun generateSignal(
         trend: String,
-        candleStrength: Int
+        candleStrength: Int,
+        support: Boolean,
+        resistance: Boolean
     ): String {
 
-        if (trend == "UP" && candleStrength >= 70) {
-            return "CALL"
+        var score = 0
+
+        if (trend == "UP") {
+            score += 1
         }
 
-        if (trend == "DOWN" && candleStrength >= 70) {
-            return "PUT"
+        if (trend == "DOWN") {
+            score -= 1
         }
 
-        return "WAIT"
+        if (candleStrength >= 70) {
+            score += 1
+        }
+
+        if (support) {
+            score += 1
+        }
+
+        if (resistance) {
+            score -= 1
+        }
+
+        return when {
+            score >= 2 -> "CALL"
+            score <= -2 -> "PUT"
+            else -> "WAIT"
+        }
     }
 }
