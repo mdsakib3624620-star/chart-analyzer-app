@@ -3,11 +3,20 @@ package com.example.chartanalyzer
 class AnalysisManager {
 
     private val candleAnalyzer = CandleAnalyzer()
+    private val candleDetector = CandleDetector()
     private val trendAnalyzer = TrendAnalyzer()
     private val supportResistance = SupportResistance()
     private val signalEngine = SignalEngine()
+    private val imageAnalyzer = ImageAnalyzer()
 
-    fun runAnalysis(): String {
+
+    fun analyzeChart(imagePath: String): String {
+
+        val imageResult =
+            imageAnalyzer.analyzeImage(imagePath)
+
+        val candleResult =
+            candleDetector.detect()
 
         val prices = listOf(
             100.0,
@@ -16,16 +25,10 @@ class AnalysisManager {
             103.0
         )
 
-        val trend = trendAnalyzer.detectTrend(prices)
+        val trend =
+            trendAnalyzer.detectTrend(prices)
 
-        val candle = candleAnalyzer.analyze(
-            open = 100.0,
-            close = 103.0,
-            high = 104.0,
-            low = 99.0
-        )
-
-        val level =
+        val levels =
             supportResistance.findLevels(prices)
 
         val signal =
@@ -36,16 +39,21 @@ class AnalysisManager {
                 resistance = false
             )
 
+
         return """
-            Trend: $trend
-
-            Candle:
-            $candle
-
-            Levels:
-            $level
-
-            Signal: $signal
+        $imageResult
+        
+        $candleResult
+        
+        Trend:
+        $trend
+        
+        Levels:
+        $levels
+        
+        Final Signal:
+        $signal
         """.trimIndent()
     }
+
 }
