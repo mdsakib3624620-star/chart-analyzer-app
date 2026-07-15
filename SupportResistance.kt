@@ -2,18 +2,19 @@ package com.example.chartanalyzer
 
 class SupportResistance {
 
-    fun findSupportResistance(
-        prices: List<Double>
-    ): String {
+    fun findLevels(prices: List<Double>): String {
 
         if (prices.isEmpty()) {
             return "NO DATA"
         }
 
-        val highest = prices.maxOrNull()
-        val lowest = prices.minOrNull()
+        val support = prices.minOrNull() ?: 0.0
+        val resistance = prices.maxOrNull() ?: 0.0
 
-        return "Resistance: $highest, Support: $lowest"
+        return """
+            Support: $support
+            Resistance: $resistance
+        """.trimIndent()
     }
 
 }
