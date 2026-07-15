@@ -2,24 +2,23 @@ package com.example.chartanalyzer
 
 class CameraAnalyzer {
 
-    var isScanning = false
+    var lastImage: String = ""
 
     fun startScan(): String {
-        isScanning = true
-
-        return "Camera Scan Started"
-    }
-
-    fun stopScan(): String {
-        isScanning = false
-
-        return "Camera Scan Stopped"
+        return "Camera Scan Ready"
     }
 
     fun analyzeImage(imagePath: String): String {
-        // Screenshot/Camera image analysis will be added here
 
-        return "Image received: $imagePath"
+        lastImage = imagePath
+
+        // এখানে পরে:
+        // - Candle detection
+        // - Chart pattern detection
+        // - Price movement analysis
+        // যোগ করা হবে
+
+        return "Screenshot received"
     }
 
 }
