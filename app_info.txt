@@ -1,0 +1,2 @@
+Quotex Chart Analyzer App
+Offline Android App Project
