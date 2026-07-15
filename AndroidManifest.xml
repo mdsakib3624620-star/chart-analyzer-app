@@ -1,1 +1,15 @@
-<uses-permission android:name="android.permission.CAMERA"/>vitvit
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <application
+        android:label="Quotex Chart Analyzer">
+
+        <activity
+            android:name="com.example.chartanalyzer.MainActivity"
+            android:exported="true">
+        </activity>
+
+    </application>
+
+</manifest>
