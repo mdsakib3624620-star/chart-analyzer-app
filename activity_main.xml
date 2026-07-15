@@ -1,13 +1,37 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="20dp">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quotex Chart Analyzer"
-        android:textSize="24sp"/>
+        android:textSize="28sp"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/scanButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Camera Scan"/>
+
+    <Button
+        android:id="@+id/imageButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Analyze Screenshot"/>
+
+    <TextView
+        android:id="@+id/resultText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Signal: Waiting..."
+        android:textSize="20sp"
+        android:padding="20dp"/>
 
 </LinearLayout>
