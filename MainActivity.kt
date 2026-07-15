@@ -7,6 +7,8 @@ import android.widget.TextView
 
 class MainActivity : Activity() {
 
+    private val analysisManager = AnalysisManager()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -17,11 +19,11 @@ class MainActivity : Activity() {
         val resultText = findViewById<TextView>(R.id.resultText)
 
         scanButton.setOnClickListener {
-            resultText.text = "Camera scanning..."
+            resultText.text = analysisManager.runAnalysis()
         }
 
         imageButton.setOnClickListener {
-            resultText.text = "Analyzing chart..."
+            resultText.text = "Screenshot analysis ready"
         }
     }
 }
