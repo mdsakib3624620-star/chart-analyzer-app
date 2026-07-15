@@ -2,18 +2,35 @@ package com.example.chartanalyzer
 
 class CandleAnalyzer {
 
-    fun calculateStrength(
-        body: Double,
-        wick: Double
-    ): Int {
+    fun analyze(
+        open: Double,
+        close: Double,
+        high: Double,
+        low: Double
+    ): String {
 
-        val strength = ((body / (body + wick)) * 100).toInt()
+        val body = kotlin.math.abs(close - open)
 
-        return if (strength > 100) {
-            100
+        val upperWick = high - maxOf(open, close)
+
+        val lowerWick = minOf(open, close) - low
+
+        val type = if (close > open) {
+            "BULLISH"
         } else {
-            strength
+            "BEARISH"
         }
+
+        val strength =
+            ((body / (high - low)) * 100).toInt()
+
+        return """
+            Type: $type
+            Body: $body
+            Upper Wick: $upperWick
+            Lower Wick: $lowerWick
+            Strength: $strength%
+        """.trimIndent()
     }
 
 }
