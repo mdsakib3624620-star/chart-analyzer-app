@@ -9,11 +9,10 @@ import android.widget.TextView
 
 class MainActivity : Activity() {
 
-    private val analysisManager = AnalysisManager()
-    private lateinit var resultText: TextView
-
     private val CAMERA_CODE = 2000
     private val IMAGE_CODE = 1000
+
+    private lateinit var resultText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,7 @@ class MainActivity : Activity() {
         val imageButton = findViewById<Button>(R.id.imageButton)
         resultText = findViewById(R.id.resultText)
 
-        // Live Camera
+        // Camera
         scanButton.setOnClickListener {
 
             val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -35,7 +34,7 @@ class MainActivity : Activity() {
             )
         }
 
-        // Screenshot / Gallery
+        // Screenshot/Gallery
         imageButton.setOnClickListener {
 
             val imageIntent = Intent(
@@ -49,6 +48,7 @@ class MainActivity : Activity() {
             )
         }
     }
+
 
     override fun onActivityResult(
         requestCode: Int,
@@ -64,16 +64,16 @@ class MainActivity : Activity() {
 
         if (resultCode == RESULT_OK) {
 
-            when(requestCode){
+            when(requestCode) {
 
                 CAMERA_CODE -> {
                     resultText.text =
-                        "Camera image received. Analyzing..."
+                        "Camera image received"
                 }
 
                 IMAGE_CODE -> {
                     resultText.text =
-                        "Screenshot received. Analyzing..."
+                        "Screenshot received"
                 }
             }
         }
