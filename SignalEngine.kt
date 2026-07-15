@@ -2,9 +2,19 @@ package com.example.chartanalyzer
 
 class SignalEngine {
 
-    fun generateSignal(): String {
-        // CALL / PUT signal logic will be added here
+    fun generateSignal(
+        trend: String,
+        candleStrength: Int
+    ): String {
+
+        if (trend == "UP" && candleStrength >= 70) {
+            return "CALL"
+        }
+
+        if (trend == "DOWN" && candleStrength >= 70) {
+            return "PUT"
+        }
+
         return "WAIT"
     }
-
 }
